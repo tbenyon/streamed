@@ -20,5 +20,15 @@ users = [
 def save_users():
     pickle_file = open('data/users.pickle', 'wb')
     pickle.dump(users, pickle_file)
+    pickle_file.close()
+
+def load_users():
+    global users
+    pickle_file = open('data/users.pickle', 'rb')
+    users = pickle.load(pickle_file)
+    pickle_file.close()
+    print(users)
 
 save_users()
+
+load_users()
