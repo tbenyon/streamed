@@ -31,21 +31,39 @@ def load_users():
     pickle_file.close()
 
 def create_user():
-    requested_user_name = input("What would you like your username to be?")
-    password = input("What would you like your password to be?")
-    dob = input("What is your dob? (DD/MM/YYYY)")
-    gender = input("What is your gender?")
-    address = input("What is your address?")
+    error = True
+    while error == True:
+        requested_user_name = input("What would you like your username to be?")
+        password = input("What would you like your password to be?")
+        password2 = input("Please re-enter your password.")
+        dob = input("What is your dob? (DD/MM/YYYY)")
+        gender = input("What is your gender?")
+        address = input("What is your address?")
 
-    user = {
-        "name": requested_user_name,
-        "password": password,
-        "address": address,
-        "dob": dob,
-        "gender": gender,
-    }
+        user = {
+            "name": requested_user_name,
+            "password": password,
+            "password_validate": password2,
+            "address": address,
+            "dob": dob,
+            "gender": gender,
+        }
+
+        error = validate_user_credentials(user)
 
     users.append(user)
+
+def validate_user_credentials(user):
+    if user["password"] != user["password_validate"]:
+        print("Passwords do not match.")
+        return True
+    elif len(user["dob"]) != 10:
+        print("Incorrect DOB format")
+        return True
+    else:
+        return False
+
+
 
 load_users()
 
