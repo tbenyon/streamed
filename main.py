@@ -63,13 +63,24 @@ def validate_user_credentials(user):
     else:
         return False
 
+def login():
+    login_correct = False
+    while login_correct == False:
+        username = input("What is your username?")
+        password = input("What is your password?")
 
+        for user in users:
+            if user["name"] == username and user["password"] == password:
+                login_correct = True
+
+        if login_correct == True:
+            print("You are logged in!")
+        else:
+            print("Your username or password are incorrect. Try again.")
+
+login()
 
 load_users()
-
-print(users)
-
-create_user()
 
 print(users)
 
