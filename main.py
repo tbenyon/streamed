@@ -78,9 +78,20 @@ def login():
         else:
             print("Your username or password are incorrect. Try again.")
 
-login()
+def login_or_create_user():
+    valid_choice = False
+    while valid_choice == False:
+        choice = input("Would you like to:\n  1: Login\n  2: Create User")
+        if choice == "1":
+            valid_choice = True
+            login()
+        elif choice == "2":
+            valid_choice = True
+            create_user()
+        else:
+            print("You must type one of the above options. Please try again.")
 
-load_users()
+login_or_create_user()
 
 print(users)
 
