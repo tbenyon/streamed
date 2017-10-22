@@ -7,7 +7,8 @@ users = [
         "address": "123 Monkey Road",
         "dob": "15/1/1987",
         "gender": "male",
-        "interests": ["action", "Nick Cage"]
+        "interests": ["action", "Nick Cage"],
+        "watched": []
      },
     {
         "name": "Gerald",
@@ -15,7 +16,8 @@ users = [
         "address": "234 Elephant Road",
         "dob": "15/1/1986",
         "gender": "male",
-        "interests": ["romance"]
+        "interests": ["romance"],
+        "watched": []
     }
 ]
 
@@ -70,6 +72,8 @@ films = [
     }
 ]
 
+current_user = ""
+
 def save_users():
     pickle_file = open('data/users.pickle', 'wb')
     pickle.dump(users, pickle_file)
@@ -115,6 +119,7 @@ def validate_user_credentials(user):
         return False
 
 def login():
+    global current_user
     login_correct = False
     while login_correct == False:
         username = input("What is your username?")
@@ -123,6 +128,7 @@ def login():
         for user in users:
             if user["name"] == username and user["password"] == password:
                 login_correct = True
+                current_user = user["name"]
 
         if login_correct == True:
             print("You are logged in!")
@@ -143,17 +149,24 @@ def login_or_create_user():
             print("You must type one of the above options. Please try again.")
 
 def watch_film():
+    global current_user
     print("FILMS:")
     for film in films:
         print(str(film["id"]) + ": " + film["name"])
 
     film_choice = input("Which film would you like to watch? (Type the ID)")
 
+    for user in users:
+        if user["name"] == current_user:
+            user["watched"].append(film_choice)
+    
+    save_users()
 
 # login_or_create_user()
 #
 # print(users)
 #
 # save_users()
-
+load_users()
+login()
 watch_film()
