@@ -19,6 +19,57 @@ users = [
     }
 ]
 
+films = [
+    {
+        "id": 0,
+        "name": "Seven",
+        "genre": "thriller",
+        "lead_actor": "Lucy",
+    },
+    {
+        "id": 1,
+        "name": "Matrix",
+        "genre": "action",
+        "lead_actor": "Barry",
+    },
+    {
+        "id": 2,
+        "name": "Alien",
+        "genre": "thriller",
+        "lead_actor": "Barry",
+    },
+    {
+        "id": 3,
+        "name": "The Dark Knight",
+        "genre": "action",
+        "lead_actor": "Dave",
+    },
+    {
+        "id": 4,
+        "name": "Pulp Fiction",
+        "genre": "action",
+        "lead_actor": "Barry",
+    },
+    {
+        "id": 5,
+        "name": "The Usual Suspects",
+        "genre": "thriller",
+        "lead_actor": "Dave",
+    },
+    {
+        "id": 6,
+        "name": "Titanic",
+        "genre": "romance",
+        "lead_actor": "Lucy",
+    },
+    {
+        "id": 7,
+        "name": "The Notebook",
+        "genre": "romance",
+        "lead_actor": "Dave",
+    }
+]
+
 def save_users():
     pickle_file = open('data/users.pickle', 'wb')
     pickle.dump(users, pickle_file)
