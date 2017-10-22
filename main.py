@@ -1,26 +1,5 @@
 import pickle
 
-users = [
-    {
-        "name": "Tom",
-        "password": "pw1",
-        "address": "123 Monkey Road",
-        "dob": "15/1/1987",
-        "gender": "male",
-        "interests": ["action", "Nick Cage"],
-        "watched": []
-     },
-    {
-        "name": "Gerald",
-        "password": "pw2",
-        "address": "234 Elephant Road",
-        "dob": "15/1/1986",
-        "gender": "male",
-        "interests": ["romance"],
-        "watched": []
-    }
-]
-
 films = [
     {
         "id": 0,
@@ -81,9 +60,34 @@ def save_users():
 
 def load_users():
     global users
-    pickle_file = open('data/users.pickle', 'rb')
-    users = pickle.load(pickle_file)
-    pickle_file.close()
+    try:
+        pickle_file = open('data/users.pickle', 'rb')
+        users = pickle.load(pickle_file)
+        pickle_file.close()
+    except:
+        users = [
+            {
+                "name": "Tom",
+                "password": "pw1",
+                "address": "123 Monkey Road",
+                "dob": "15/1/1987",
+                "gender": "male",
+                "interests": ["action", "Nick Cage"],
+                "watched": []
+            },
+            {
+                "name": "Gerald",
+                "password": "pw2",
+                "address": "234 Elephant Road",
+                "dob": "15/1/1986",
+                "gender": "male",
+                "interests": ["romance"],
+                "watched": []
+            }
+        ]
+        save_users()
+        print("Users seeded.")
+
 
 def create_user():
     error = True
