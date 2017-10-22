@@ -142,8 +142,18 @@ def login_or_create_user():
         else:
             print("You must type one of the above options. Please try again.")
 
-login_or_create_user()
+def watch_film():
+    print("FILMS:")
+    for film in films:
+        print(str(film["id"]) + ": " + film["name"])
 
-print(users)
+    film_choice = input("Which film would you like to watch? (Type the ID)")
 
-save_users()
+
+# login_or_create_user()
+#
+# print(users)
+#
+# save_users()
+
+watch_film()
